@@ -750,6 +750,11 @@ The following are names of parameters or literal values and should not be transl
         <target state="translated">NETSDK1048: per GenerateRuntimeConfigurationFiles è stato specificato 'AdditionalProbingPaths', ma questo valore verrà ignorato perché 'RuntimeConfigDevPath' è vuoto.</target>
         <note>{StrBegin="NETSDK1048: "}</note>
       </trans-unit>
+      <trans-unit id="SkippingUnchangedFile">
+        <source>Skipping write to file "{0}" because content would not change</source>
+        <target state="new">Skipping write to file "{0}" because content would not change</target>
+        <note />
+      </trans-unit>
       <trans-unit id="TargetFrameworkIsEol">
         <source>NETSDK1138: The target framework '{0}' is out of support and will not receive security updates in the future. Please refer to {1} for more information about the support policy.</source>
         <target state="translated">NETSDK1138: il framework di destinazione '{0}' non è più supportato e non riceverà aggiornamenti della sicurezza in futuro. Per altre informazioni sui criteri di supporto, vedere {1}.</target>
