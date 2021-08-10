@@ -69,7 +69,7 @@ global using global::System.Threading.Tasks;
         }
 
         [RequiresMSBuildVersionFact("17.0.0.32901")]
-        public void It_can_remove_specific_imports_in_project_file()
+        public void It_can_remove_implicit_usings_in_project_file()
         {
             var tfm = "net6.0";
             var testProject = CreateTestProject(tfm);
