@@ -118,7 +118,7 @@ namespace Microsoft.NET.Build.Tasks
 
             public int GetHashCode(UsingInfo obj)
             {
-                return StringComparer.Ordinal.GetHashCode(obj);
+                return StringComparer.Ordinal.GetHashCode(obj.Namespace);
             }
         }
     }
