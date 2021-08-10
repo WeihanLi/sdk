@@ -35,11 +35,7 @@ Copyright (c) .NET Foundation. All rights reserved.
    -->
   <Target Name="GenerateGlobalUsings"
           BeforeTargets="BeforeCompile;CoreCompile"
-          DependsOnTargets="PrepareForBuild;CoreGenerateGlobalUsings" />
-
-  <Target Name="CoreGenerateGlobalUsings"
-          Inputs="$(MSBuildAllProjects)"
-          Outputs="$(GeneratedGlobalUsingsFile)"
+          AfterTargets="PrepareForBuild"
           Condition="@(Using->Count()) != 0">
 
     <GenerateGlobalUsings
