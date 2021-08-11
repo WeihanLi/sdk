@@ -69,7 +69,7 @@ global using global::System.Threading.Tasks;
         }
 
         [RequiresMSBuildVersionFact("17.0.0.32901")]
-        public void It_can_remove_implicit_usings_in_project_file()
+        public void It_can_remove_specific_usings_in_project_file()
         {
             var tfm = "net6.0";
             var testProject = CreateTestProject(tfm);
@@ -101,7 +101,7 @@ global using global::System.Threading.Tasks;
         }
 
         [Fact]
-        public void It_can_generate_custom_imports()
+        public void It_can_generate_custom_usings()
         {
             var tfm = "net6.0";
             var testProject = CreateTestProject(tfm);
@@ -117,7 +117,6 @@ global using global::System.Threading.Tasks;
 </ItemGroup>"));
             });
 
-            testProject.AdditionalItems["Using"] = new Dictionary<string, string> { ["Include"] = "CustomNamespace" };
             var testAsset = _testAssetsManager.CreateTestProject(testProject);
             var globalUsingsFileName = $"{testAsset.TestProject.Name}.GlobalUsings.cs";
 
@@ -182,25 +181,6 @@ global using Disk = global::System.IO.File;
 global using FileIO = global::System.IO.File;
 global using static global::TestStaticNamespace;
 ");
-        }
-
-        [Fact]
-        public void It_can_disable_import_generation()
-        {
-            var tfm = "net6.0";
-            var testProject = CreateTestProject(tfm);
-            var testAsset = _testAssetsManager.CreateTestProject(testProject);
-            var globalUsingsFileName = $"{testAsset.TestProject.Name}.GlobalUsings.cs";
-
-            var buildCommand = new BuildCommand(testAsset);
-            buildCommand
-                .Execute()
-                .Should()
-                .Fail();
-
-            var outputDirectory = buildCommand.GetIntermediateDirectory(tfm);
-
-            outputDirectory.Should().NotHaveFile(globalUsingsFileName);
         }
 
         private TestProject CreateTestProject(string tfm)

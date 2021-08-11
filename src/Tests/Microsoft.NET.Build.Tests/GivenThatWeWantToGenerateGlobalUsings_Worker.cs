@@ -53,7 +53,7 @@ global using global::System.Threading.Tasks;
         }
 
         [Fact]
-        public void It_can_disable_worker_imports()
+        public void It_can_disable_worker_usings()
         {
             var tfm = "net6.0";
             var testProject = CreateTestProject(tfm);

@@ -17,7 +17,7 @@ namespace Microsoft.NET.Build.Tests
         public GivenThatWeWantToGenerateGlobalUsings_BlazorWasm(ITestOutputHelper log) : base(log) { }
 
         [RequiresMSBuildVersionFact("17.0.0.32901")]
-        public void It_generates_blazorwasm_imports_and_builds_successfully()
+        public void It_generates_blazorwasm_usings_and_builds_successfully()
         {
             var tfm = "net6.0";
             var testProject = CreateTestProject(tfm);
@@ -51,7 +51,7 @@ global using global::System.Threading.Tasks;
         }
 
         [Fact]
-        public void It_can_disable_blazorwasm_imports()
+        public void It_can_disable_blazorwasm_usings()
         {
             var tfm = "net6.0";
             var testProject = CreateTestProject(tfm);
