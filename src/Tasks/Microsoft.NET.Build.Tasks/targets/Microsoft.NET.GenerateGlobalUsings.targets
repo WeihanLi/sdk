@@ -38,9 +38,15 @@ Copyright (c) .NET Foundation. All rights reserved.
           AfterTargets="PrepareForBuild"
           Condition="@(Using->Count()) != 0">
 
-    <GenerateGlobalUsings
-      Usings="@(Using)"
-      OutputFile="$(GeneratedGlobalUsingsFile)" />
+    <GenerateGlobalUsings Usings="@(Using)">
+      <Output TaskParameter="Lines" ItemName="_GlobalUsingLines" />
+    </GenerateGlobalUsings>
+
+    <WriteLinesToFile
+      File="$(GeneratedGlobalUsingsFile)"
+      Lines="@(_GlobalUsingLines)"
+      Overwrite="true"
+      WriteOnlyWhenDifferent="true" />
 
     <ItemGroup>
       <Compile Include="$(GeneratedGlobalUsingsFile)" />
