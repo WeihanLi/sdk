@@ -19,7 +19,7 @@ namespace Microsoft.NET.Build.Tests
         public GivenThatWeWantToGenerateImpliciUsings_DotNet(ITestOutputHelper log) : base(log) { }
 
         [RequiresMSBuildVersionFact("17.0.0.32901")]
-        public void It_can_generates_global_usings_and_builds_successfully()
+        public void It_can_generate_global_usings_and_builds_successfully()
         {
             var tfm = "net6.0";
             var testProject = CreateTestProject(tfm);
